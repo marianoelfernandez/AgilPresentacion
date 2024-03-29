@@ -1,13 +1,12 @@
 class DiscountService {
+    private discounts: Record<string, number> = {
+        estudiante: 0.2,
+        jubilado: 0.15,
+        empleado: 0.1,
+    };
+
     getDiscount(category: string, price: number): number {
-        if (category === 'estudiante') {
-            return price * 0.2;
-        } else if (category === 'jubilado') {
-            return price * 0.15;
-        } else if (category === 'empleado') {
-            return price * 0.1;
-        } else {
-            return 0;
-        }
+        const discountRate = this.discounts[category] || 0;
+        return price * discountRate;
     }
 }
